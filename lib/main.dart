@@ -104,7 +104,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     if (res.hasData) {
                       var news = res.data.article.sublist(1);
                       return Column(children: [
-                        for (var i in news) CustomCard(article: i)
+                        for (var i in news)
+                          CustomCard(
+                            article: i,
+                          )
                       ]);
                     }
                     return CircularProgressIndicator();

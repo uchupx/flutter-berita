@@ -1,12 +1,28 @@
 import 'package:berita/clients/article.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
-class CustomCard extends StatelessWidget {
-  @override
+class CustomCard extends StatefulWidget {
+  final Article article;
   CustomCard({Key key, this.article}) : super(key: key);
 
-  final Article article;
+  @override
+  _CustomCard createState() => _CustomCard();
+}
+
+class _CustomCard extends State<CustomCard> {
+  final timeNow = DateTime.now();
+  var article;
+  DateTime articlePosted;
+  @override
+  void initState() {
+    super.initState();
+    article = widget.article;
+    var tmpDate = DateTime.parse(widget.article.publishedAt);
+    var dur = tmpDate.difference(timeNow);
+    articlePosted = tmpDate.subtract(dur);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +84,7 @@ class CustomCard extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          "6m ago",
+                          timeago.format(articlePosted, locale: 'en_short'),
                           style: TextStyle(
                               fontWeight: FontWeight.w300, fontSize: 13),
                         ),
