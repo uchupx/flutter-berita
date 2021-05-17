@@ -3,6 +3,8 @@ import 'package:berita/clients/news.dart';
 import 'package:berita/components/appbar.dart';
 import 'package:berita/components/card.dart';
 import 'package:berita/components/headline.dart';
+import 'package:berita/components/shimmer/headline.dart';
+import 'package:berita/components/shimmer/list.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
@@ -95,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       article: res.data.article[0],
                     );
                   }
-                  return CircularProgressIndicator();
+                  return ShimmerHeadline();
                 },
               ),
               FutureBuilder<ResponseNews>(
@@ -110,7 +112,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           )
                       ]);
                     }
-                    return CircularProgressIndicator();
+                    return Column(
+                      children: [
+                        ShimmerList(),
+                        ShimmerList(),
+                        ShimmerList(),
+                        ShimmerList()
+                      ],
+                    );
                   })
             ],
           ),

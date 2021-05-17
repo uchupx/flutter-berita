@@ -126,18 +126,6 @@ class _CustomCard extends State<CustomCard> {
           )
         ],
       ),
-      // decoration: BoxDecoration(
-      //   color: Colors.white,
-      //   borderRadius: BorderRadius.all(Radius.circular(10)),
-      //   boxShadow: [
-      //     BoxShadow(
-      //       color: Colors.black12,
-      //       spreadRadius: 1,
-      //       blurRadius: 5,
-      //       offset: Offset(2, 2), // changes position of shadow
-      //     ),
-      //   ],
-      // ),
     );
   }
 }
